@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MvcExamenLuisEFrias.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Tickets";
+}
+
+<h1>Tickets</h1>
+
+<p>
+    <a asp-action="CreateTicket">Create New</a>
+</p>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Importe
+                </th>
+                <th>
+                    Producto
+                </th>
+                <th>
+                    FileName
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Importe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.StoragePath)" style="width:150px;height:150px" />
+                    </td>
+                    <td>
+                        <a class="btn btn-danger">Procesar Ticket</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
